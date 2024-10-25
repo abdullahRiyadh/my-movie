@@ -11,7 +11,7 @@ const Favorites = () => {
         <div className="container mx-auto p-4 mt-16"> {/* Added mt-16 to create space below the navbar */}
             <Navbar />
             <h1 className="text-2xl font-bold mt-6 text-center">Your Favorite Movies</h1> {/* Title for the favorites page */}
-            <p className="text-gray-400 mb-4 text-center">These are the movies you"ve added to favorites.</p> {/* Subtitle for the page */}
+            <p className="text-gray-400 mb-4 text-center">These are the movies you&apos;ve added to favorites.</p> {/* Subtitle for the page */}
 
             {/* Displaying favorite movies */}
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> {/* Responsive grid for movie cards */}
