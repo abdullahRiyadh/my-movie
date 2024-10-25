@@ -1,13 +1,14 @@
-import Navbar from '../components/Navbar';
-import '../styles/globals.css';
+import '../styles/globals.css'; // Import global CSS styles
+import { MovieProvider } from '../context/MovieContext'; // Import MovieProvider for global state management
 
-export default function MyApp({ Component, pageProps }) {
+// Custom App component to initialize pages
+function MyApp({ Component, pageProps }) {
     return (
-        <>
-            <Navbar />
-            <main className="pt-16">  {/* pt-16 to offset fixed Navbar height */}
-                <Component {...pageProps} />
-            </main>
-        </>
+        <MovieProvider> {/* Wrap the application with the MovieProvider to manage state */}
+            <Component {...pageProps} /> {/* Render the current page */}
+        </MovieProvider>
     );
 }
+
+// Export the custom App component
+export default MyApp;

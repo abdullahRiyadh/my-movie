@@ -1,58 +1,61 @@
-// components/Navbar.js
-import Link from 'next/link'; 
-import { FaHome, FaHeart, FaHistory, FaBars, FaTimes } from 'react-icons/fa'; // Import icons 
-import { useState } from 'react'; // Import useState for managing the mobile menu state
+import Link from 'next/link';
+import { FaHome, FaHeart, FaHistory, FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from 'react';
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false); // State to track mobile menu visibility
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
-        setIsOpen(!isOpen); // Toggle the mobile menu visibility
+        setIsOpen(!isOpen);
+    };
+
+    const closeMenu = () => {
+        setIsOpen(false);
     };
 
     return (
-        <nav className="bg-gray-800 p-4 fixed w-full z-10 top-0 shadow-lg">
-            <div className="container mx-auto flex justify-between items-center">
+        <nav className="bg-gray-800 p-4 fixed w-full z-10 top-0 shadow-lg mx-0">
+            <div className="container mx-auto flex items-center justify-around">
                 {/* Title of the application */}
                 <h1 className="text-xl font-bold text-gray-100">MovieApp</h1>
 
+                {/* Desktop Navigation Links */}
+                <div className="hidden md:flex space-x-8">
+                    <Link href="/" className="flex items-center text-gray-100 hover:text-indigo-400">
+                        <FaHome className="mr-1" /> Home
+                    </Link>
+                    <Link href="/favorites" className="flex items-center text-gray-100 hover:text-indigo-400">
+                        <FaHeart className="mr-1" /> Favorites
+                    </Link>
+                    <Link href="/history" className="flex items-center text-gray-100 hover:text-indigo-400">
+                        <FaHistory className="mr-1" /> History
+                    </Link>
+                </div>
+
                 {/* Mobile Menu Button */}
                 <button className="md:hidden text-gray-100 hover:text-indigo-400" onClick={toggleMenu}>
-                    {isOpen ? <FaTimes /> : <FaBars />} {/* Show close icon if menu is open */}
+                    {isOpen ? <FaTimes /> : <FaBars />}
                 </button>
-
-                {/* Navigation links (desktop) */}
-                <ul className={`hidden md:flex space-x-4 ${isOpen ? 'flex' : 'hidden'}`}>
-                    <li className="flex items-center">
-                        <FaHome className="inline-block mr-1" />
-                        <Link href="/" className="hover:text-indigo-400">Home</Link>
-                    </li>
-                    <li className="flex items-center">
-                        <FaHeart className="inline-block mr-1" />
-                        <Link href="/favorites" className="hover:text-indigo-400">Favorites</Link>
-                    </li>
-                    <li className="flex items-center">
-                        <FaHistory className="inline-block mr-1" />
-                        <Link href="/history" className="hover:text-indigo-400">History</Link>
-                    </li>
-                </ul>
             </div>
 
-            {/* Mobile Menu (visible only on smaller screens) */}
+            {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden bg-gray-700 p-4">
                     <ul className="flex flex-col space-y-2">
-                        <li className="flex items-center">
-                            <FaHome className="inline-block mr-1" />
-                            <Link href="/" className="hover:text-indigo-400">Home</Link>
+                        <li onClick={closeMenu}>
+                            <Link href="/" className="flex items-center text-gray-100 hover:text-indigo-400">
+                                <FaHome className="mr-1" /> Home
+                            </Link>
                         </li>
-                        <li className="flex items-center">
-                            <FaHeart className="inline-block mr-1" />
-                            <Link href="/favorites" className="hover:text-indigo-400">Favorites</Link>
+                        <li onClick={closeMenu}>
+                            <Link href="/favorites" className="flex items-center text-gray-100 hover:text-indigo-400">
+                                <FaHeart className="mr-1" /> Favorites
+                            </Link>
                         </li>
-                        <li className="flex items-center">
-                            <FaHistory className="inline-block mr-1" />
-                            <Link href="/history" className="hover:text-indigo-400">History</Link>
+                        <li onClick={closeMenu}>
+                            <Link href="/history" className="flex items-center text-gray-100 hover:text-indigo-400">
+                                <FaHistory className="mr-1" /> History
+                            </Link>
                         </li>
                     </ul>
                 </div>
