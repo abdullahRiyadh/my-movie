@@ -1,5 +1,7 @@
 import Link from 'next/link'; // Import Link from Next.js for client-side navigation
 import React from 'react'; // Import React to create the component
+import Image from 'next/image'; // Import Image to update img 
+
 
 // MovieCard component to display individual movie information
 const MovieCard = ({ movie, onFavoriteClick }) => {
@@ -7,9 +9,10 @@ const MovieCard = ({ movie, onFavoriteClick }) => {
         <div className="bg-gray-900 text-white rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
             {/* Link to the movie details page using the movie's unique ID */}
             <Link href={`/movie/${movie.imdbID}`}>
-                <img 
+                <Image
                     src={movie.Poster !== "N/A" ? movie.Poster : '/placeholder.png'} // Display poster image or a placeholder
                     alt={`${movie.Title} Poster`} // Alt text for accessibility
+                    width={300} height={450}
                     className="w-full h-60 object-cover" // Style for the image
                 />
             </Link>

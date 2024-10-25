@@ -5,6 +5,7 @@ import Footer from '../../components/Footer'; // Import Footer component
 import Spinner from '../../components/Spinner'; // Import Spinner component
 import ErrorMessage from '../../components/ErrorMessage'; // Import ErrorMessage component
 import { useMovieContext } from '../../context/MovieContext'; // Import the custom hook to access MovieContext
+import Image from 'next/image';
 
 // MovieDetails component to display movie information
 const MovieDetails = () => {
@@ -51,7 +52,7 @@ const MovieDetails = () => {
             <div className="mt-12">
                 <h2 className="text-3xl font-bold mb-4">{movie.Title}</h2> {/* Movie title */}
                 <div className="flex flex-col md:flex-row md:space-x-4">
-                    <img src={movie.Poster} alt={movie.Title} className="w-full md:w-1/3 h-auto" /> {/* Movie poster */}
+                    <Image src={movie.Poster} alt={movie.Title}width={300} height={450} className="w-full md:w-1/3 h-auto" /> {/* Movie poster */}
                     <div className="mt-4 md:mt-0">
                         <p><strong>Year:</strong> {movie.Year}</p> {/* Movie year */}
                         <p><strong>Director:</strong> {movie.Director}</p> {/* Movie director */}

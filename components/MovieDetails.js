@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'; // Import hooks from React
 import { useRouter } from 'next/router'; // Import useRouter for routing
 import ErrorMessage from './ErrorMessage'; // Import the ErrorMessage component
 import Spinner from './Spinner'; // Import the Spinner component
+import Image from 'next/image'; // Import Image to update img 
 
 const MovieDetails = () => {
     const router = useRouter(); // Get the router object
@@ -50,9 +51,10 @@ const MovieDetails = () => {
            
             <div className="mt-4 flex flex-col md:flex-row">
             <h1 className="text-3xl font-bold text-gray-100">{movie.Title}</h1>
-                <img
+                <Image
                     src={movie.Poster !== "N/A" ? movie.Poster : '/placeholder.png'} // Display poster or placeholder
                     alt={`${movie.Title} Poster`} // Alt text for accessibility
+                    width={300} height={450}
                     className="w-full md:w-1/2 h-auto rounded-lg shadow-lg" // Style for the image
                 />
                 <div className="md:ml-4 mt-4 md:mt-0 text-gray-200">
