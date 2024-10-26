@@ -21,7 +21,7 @@ const MovieDetails = () => {
             if (!id) return; // Return if ID is not available
 
             const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY; // Get the OMDb API key from environment variables
-            const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`); // Fetch movie details from OMDb API
+            const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`); // Fetch movie details from OMDb API
             const data = await response.json(); // Parse the JSON response
 
             if (data.Response === 'True') {
